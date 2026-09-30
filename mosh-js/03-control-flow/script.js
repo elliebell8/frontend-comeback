@@ -105,8 +105,13 @@ function max(a, b) {
 console.log(isLandscape(900, 800));
 
 function fizzBuzz(input) {
-if (input % 3 === 0 && input % 5 === 0) {
-    return 'fizzBBuzz';
+    if (typeof input !== 'number') 
+        return NaN;
+    if (input % 3 === 0 && input % 5 === 0) 
+        return 'FizzBuzz';
+    if (input % 3 === 0) 
+        return 'Fizz';
+    if (input % 5 === 0) 
+        return 'Buzz';
+    return input;
 }
-}
-fizzBuzz(3); // this will return 'fizzBuzz' because 15 is divisible by both 3 and 5

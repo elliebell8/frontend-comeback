@@ -145,3 +145,4 @@ console.log(combined2); // 6
 //If an array contains primitive values (numbers, strings, booleans), a sliced array has its own copy of those values.
 
 //But if an array contains objects, the new array contains references to the same objects.
+
