@@ -149,3 +149,46 @@ insertText()
 //      beforeend
 // </p>
 //     afterend -->
+
+// the big picture of the DOM 
+// find something - do something to it
+// find where it goes - create it - configure it - put it there
+const list = document.querySelector('.items') // find where
+
+const li = document.createElement('li')       // create
+li.textContent = 'Milk'                       // configure
+
+list.appendChild(li)                          // insert
+
+// selecting items 
+document.querySelector()
+document.querySelectorAll()
+document.getElementById()
+
+// reading/changing elements
+element.textContent
+element.innerHTML
+element.classList
+element.style
+element.getAttribute()
+element.setAttribute()
+
+//creating/removing elements 
+const li = document.createElement('li')
+
+li.textContent = 'New item'
+
+list.appendChild(li)
+before()
+after()
+append()
+prepend()
+insertAdjacentElement()
+insertAdjacentHTML()
+insertAdjacentText()
+
+//traversing the DOM 
+element.parentElement
+element.children
+element.nextElementSibling
+element.previousElementSibling
