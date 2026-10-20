@@ -15,7 +15,15 @@ function renderEmployees(employeeArray) {
 
     employeeArray.forEach(employee => {
         const li = document.createElement('li')
-        li.textContent = `${employee.name} ${employee.department}`
+        const nameSpan = document.createElement('span')
+        const departmentSpan = document.createElement('span')
+        nameSpan.textContent = employee.name
+        departmentSpan.textContent = employee.department
+        nameSpan.className = 'employee-name'
+        departmentSpan.className = 'employee-department'
+       // li.textContent = `${employee.name} ${employee.department}`
+       li.appendChild(nameSpan)
+       li.appendChild(departmentSpan)
         employeeList.appendChild(li)
     })
     
@@ -49,6 +57,8 @@ form.addEventListener('submit', (e) => {
  //create and add employee 
  const newEmployee = { name, department }
  employees.push(newEmployee)
+
+ searchInput.value = ''
 
 //update display employees
 updateEmployeeList()
