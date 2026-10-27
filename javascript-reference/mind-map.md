@@ -336,3 +336,44 @@ const updatedEmployees = employees.map((employee) => {
 - **References:** Help explain why copied objects can be changed without mutating the originals (for these top-level properties).
 
 **Key idea:** Every callback return becomes an element of the new array.
+
+## Browser Storage & JSON
+
+```mermaid
+flowchart TD
+    A["Employee Directory"]
+    B["employees array"]
+    C["JSON.stringify()"]
+    D["localStorage.setItem()"]
+    E[("Browser localStorage")]
+    F["localStorage.getItem()"]
+    G["JSON.parse()"]
+    H["Restored employees array"]
+    I["renderEmployees()"]
+
+    A -->|"Form submitted"| B
+    B --> C
+    C --> D
+    D -->|"Save string"| E
+    E -->|"Page loads"| F
+    F --> G
+    G --> H
+    H --> I
+```
+
+### Quick Reference
+
+| Method | Purpose | What it works with |
+|---|---|---|
+| `localStorage.setItem(key, value)` | Saves data in the browser | Strings |
+| `localStorage.getItem(key)` | Retrieves saved data | Returns a string or null |
+| `JSON.stringify(data)` | Converts JavaScript data into JSON text | Arrays, objects, etc. |
+| `JSON.parse(text)` | Converts JSON text into JavaScript data | JSON strings |
+
+### Important Reminders
+
+- `setItem()` saves a snapshot of the data, not a live connection.
+- Updating an array with `.push()` does not automatically update localStorage.
+- Calling `setItem()` again with the same key replaces the saved value.
+- The key used in `setItem()` must match the key used in `getItem()`.
+- When the page refreshes, our Employee Directory retrieves the saved employees and renders them again.

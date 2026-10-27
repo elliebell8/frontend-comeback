@@ -23,7 +23,10 @@ if (savedEmployees) {
 }
 console.log(savedEmployees)
 
-function renderEmployees(employeeArray) {
+// Displays the employees provided to the function.
+// Clears the existing list, creates HTML elements for
+// each employee, and adds them to the page.
+function renderEmployees(employeeArray) { //updates dom
     employeeList.textContent = ''
 
     employeeArray.forEach(employee => {
@@ -42,7 +45,9 @@ function renderEmployees(employeeArray) {
     
 }
 
-function updateEmployeeList() {
+// Gets the current search text, filters employees by name,
+// and passes the matching employees to renderEmployees().
+function updateEmployeeList() { //filters data
     const searchTerm = searchInput.value.toLowerCase()
 
     const filteredEmployees = employees.filter(employee => 
@@ -52,7 +57,10 @@ function updateEmployeeList() {
     renderEmployees(filteredEmployees)
 }
 
-
+// Handles the add-employee form submission.
+// Prevents page reload, validates the inputs,
+// creates a new employee, updates the array,
+// refreshes the display, and clears the form.
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -70,6 +78,8 @@ form.addEventListener('submit', (e) => {
  //create and add employee 
  const newEmployee = { name, department }
  employees.push(newEmployee)
+ // Save the updated array to the browser local storage so that it persists across page reloads.
+ localStorage.setItem('employees', JSON.stringify(employees))
 
  searchInput.value = ''
 
@@ -82,14 +92,11 @@ departmentInput.value = ''
 
 })
 
+// Updates the displayed employees whenever
+// the user types into the search field.
 searchInput.addEventListener('input', () => {
     updateEmployeeList()
 })
 
+// Displays the employees when the page first loads.
 updateEmployeeList()
-
-// localStorage.setItem('employees', JSON.stringify(employees))
-// console.log(employees)
-// localStorage.getItem('employees')
-//const savedEmployees = JSON.parse(localStorage.getItem('employees'))
-
