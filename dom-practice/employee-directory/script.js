@@ -5,10 +5,23 @@ const employeeList = document.querySelector('#employee-list')
 const message = document.querySelector('#message')
 const searchInput = document.querySelector('#search')
 
-const employees = [
+// let employees = [
+//     { name: 'Maya', department: 'Engineering' },
+//     { name: 'Jordan', department: 'Design' }
+// ]
+const savedEmployees = JSON.parse(localStorage.getItem('employees'))
+let employees 
+
+if (savedEmployees) {
+    //console.log('if statement', savedEmployees)
+   employees = savedEmployees
+} else {
+   employees = [
     { name: 'Maya', department: 'Engineering' },
     { name: 'Jordan', department: 'Design' }
-]
+   ]
+}
+console.log(savedEmployees)
 
 function renderEmployees(employeeArray) {
     employeeList.textContent = ''
@@ -74,3 +87,9 @@ searchInput.addEventListener('input', () => {
 })
 
 updateEmployeeList()
+
+// localStorage.setItem('employees', JSON.stringify(employees))
+// console.log(employees)
+// localStorage.getItem('employees')
+//const savedEmployees = JSON.parse(localStorage.getItem('employees'))
+

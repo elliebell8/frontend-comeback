@@ -181,6 +181,39 @@ Always ask:
 3. What does it return?
 4. What will I do with the returned value?
 
+### Primitives vs. Objects: What Gets Copied?
+
+```mermaid
+flowchart TD
+    A["Assign a value to another variable"]
+    B{"What type of value?"}
+
+    C["Primitive"]
+    D["Object or Array"]
+
+    E["Copies the value"]
+    F["Copies the reference"]
+
+    G["Independent values"]
+    H["Both variables point to the same object"]
+
+    I["Changing one variable does not change the other"]
+    J["Mutating the shared object affects both"]
+
+    A --> B
+    B --> C
+    B --> D
+    C --> E --> G --> I
+    D --> F --> H --> J
+```
+
+**Remember:**
+
+- Primitives (strings, numbers, booleans) are copied by value.
+- Assigning an object or array to another variable copies its reference.
+- Spread (`{ ...object }` or `[...array]`) creates a new outer object or array.
+- Spread is shallow: nested objects may still share references.
+
 ### References: The Boxes and Items Mental Model
 
 An array is a box. When its elements are objects, think of them as tickets pointing to objects.
